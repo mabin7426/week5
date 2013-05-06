@@ -1,18 +1,21 @@
 MoviesApp::Application.routes.draw do
 
-  # Routes for the Theater resource:
-  # CREATE
-  get '/theaters/new', controller: 'theaters', action: 'new'
+root to: 'movies#index'
 
-  # READ
+  # Routes for the Theater resource:
+  # CREATE -- DONE
+  get '/theaters/new', controller: 'theaters', action: 'new'
+  post "/theaters", controller: 'theaters', action: 'create' #new
+
+  # READ -- DONE
   get '/theaters', controller: 'theaters', action: 'index'
   get '/theaters/:id', controller: 'theaters', action: 'show'
 
-  # UPDATE
+  # UPDATE -- DONE
   get '/theaters/:id/edit', controller: 'theaters', action: 'edit'
   put '/theaters/:id', controller: 'theaters', action: 'update'
 
-  # DELETE
+  # DELETE -- DONE
   delete '/theaters/:id', controller: 'theaters', action: 'destroy'
   #------------------------------
 

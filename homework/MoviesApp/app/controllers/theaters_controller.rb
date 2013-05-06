@@ -25,21 +25,26 @@ class TheatersController < ApplicationController
   end
 
   def edit
-    @theater = Theater.find_by_id(params[:movie_id])
+    @theater = Theater.find_by_id(params[:id])
   end
 
   def update
     @theater = Theater.find_by_id(params[:id])
-
-    if @theater.save
-      redirect_to "/theaters"
-    else
-      render 'edit'
-    end
+    @theater.name = params[:name]
+    @theater.address = params[:address]
+    # I just deleted the below.. I hope that's okay...
+    # if @theater.save
+    #   redirect_to "/theaters"
+    # else
+    #   render 'edit'
+    @theater.save
+    redirect_to "/theaters"
+    
   end
 
   def destroy
-    @theater = Theater.find_by_id(params[:id])
+    t = Theater.find_by_id(params[:id])
+    t.destroy
     redirect_to "/theaters"
   end
 end
